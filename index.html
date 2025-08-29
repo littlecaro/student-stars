@@ -6,8 +6,8 @@
   <title>Student Stars by Grade</title>
   <style>
     body {
-      font-family: Helvetica, Arial, sans-serif;
-      background: #CEA2FD;
+      font-family: "Comic Sans MS", cursive, sans-serif;
+      background: #EBE8fc;
       display: flex;
       justify-content: center;
       padding: 40px;
@@ -17,11 +17,12 @@
       padding: 20px;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      width: 500px;
+      width: 520px;
     }
     h2 {
       text-align: center;
       margin-bottom: 20px;
+      color: #4B0082; /* dark purple */
     }
     .tabs {
       display: flex;
@@ -34,12 +35,13 @@
       margin: 0 4px;
       border: none;
       border-radius: 6px;
-      background: #007bff;
+      background: #6a0dad;
       color: white;
       cursor: pointer;
+      font-weight: bold;
     }
     .tabs button.active {
-      background: #0056b3;
+      background: #4B0082;
     }
     ul {
       list-style: none;
@@ -50,24 +52,34 @@
       justify-content: space-between;
       align-items: center;
       padding: 10px;
-      border-bottom: 1px solid #eee;
+      border-bottom: 1px solid #ddd;
     }
     .stars {
       font-size: 1.2em;
-      color: gold;
     }
     button.action {
       margin: 0 2px;
       border: none;
-      background: #007bff;
       color: white;
       border-radius: 6px;
       padding: 4px 8px;
       cursor: pointer;
       font-size: 0.9em;
+      background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+      );
+      background-size: 400% 400%;
+      animation: rainbow 6s linear infinite;
     }
     button.action:hover {
-      background: #0056b3;
+      transform: scale(1.1);
     }
     .add-student {
       display: flex;
@@ -93,33 +105,242 @@
       cursor: text;
     }
     .name[contenteditable="true"]:focus {
-      outline: 2px solid #007bff;
-      background: #eef6ff;
+      outline: 2px solid #6a0dad;
+      background: #f2e6ff;
     }
     .reset-container {
       text-align: center;
       margin-top: 20px;
     }
     .reset-container button {
-      background: #dc3545;
-      border:
+      border: none;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1em;
+      font-weight: bold;
+      background: linear-gradient(
+        90deg,
+        red,
+        orange,
+        yellow,
+        green,
+        blue,
+        indigo,
+        violet
+      );
+      background-size: 400% 400%;
+      animation: rainbow-btn 6s linear infinite;
+      text-shadow: 0 0 4px rgba(0,0,0,0.4);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease-in-out;
+    }
+    .reset-container button:hover {
+      transform: scale(1.1);
+    }
 
-<script>
-  function saveData() {
-    ...
-  }
+    @keyframes rainbow {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes rainbow-btn {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Student Stars by Grade</h2>
 
-  function addStudent(grade, name = "", id = null, stars = 0) {
-    ...
-  }
+    <div class="tabs">
+      <button onclick="showGrade('first')" id="tab-first" class="active">First Grade</button>
+      <button onclick="showGrade('second')" id="tab-second">Second Grade</button>
+      <button onclick="showGrade('third')" id="tab-third">Third Grade</button>
+      <button onclick="showGrade('fourth')" id="tab-fourth">Fourth Grade</button>
+      <button onclick="showGrade('fifth')" id="tab-fifth">Fifth Grade</button>
+    </div>
 
-  function resetAll() {
-    ...
-  }
+    <!-- Grade Pages -->
+    <div id="first" class="grade-page active">
+      <ul id="student-list-first"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-first" placeholder="Enter student name">
+        <button onclick="addStudent('first')">Add</button>
+      </div>
+      <div class="reset-container">
+        <button onclick="resetGrade('first')">Reset First Grade</button>
+      </div>
+    </div>
 
-  window.onload = function() {
-    ...
-  }
-</script>
+    <div id="second" class="grade-page">
+      <ul id="student-list-second"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-second" placeholder="Enter student name">
+        <button onclick="addStudent('second')">Add</button>
+      </div>
+      <div class="reset-container">
+        <button onclick="resetGrade('second')">Reset Second Grade</button>
+      </div>
+    </div>
+
+    <div id="third" class="grade-page">
+      <ul id="student-list-third"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-third" placeholder="Enter student name">
+        <button onclick="addStudent('third')">Add</button>
+      </div>
+      <div class="reset-container">
+        <button onclick="resetGrade('third')">Reset Third Grade</button>
+      </div>
+    </div>
+
+    <div id="fourth" class="grade-page">
+      <ul id="student-list-fourth"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-fourth" placeholder="Enter student name">
+        <button onclick="addStudent('fourth')">Add</button>
+      </div>
+      <div class="reset-container">
+        <button onclick="resetGrade('fourth')">Reset Fourth Grade</button>
+      </div>
+    </div>
+
+    <div id="fifth" class="grade-page">
+      <ul id="student-list-fifth"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-fifth" placeholder="Enter student name">
+        <button onclick="addStudent('fifth')">Add</button>
+      </div>
+      <div class="reset-container">
+        <button onclick="resetGrade('fifth')">Reset Fifth Grade</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const rainbowColors = ["red","orange","yellow","green","blue","indigo","violet"];
+
+    function saveData() {
+      const data = {};
+      document.querySelectorAll('.grade-page').forEach(page => {
+        const grade = page.id;
+        const students = [];
+        page.querySelectorAll('li').forEach(li => {
+          students.push({
+            id: li.id,
+            name: li.querySelector('.name').textContent.trim(),
+            stars: li.querySelectorAll('.stars span').length
+          });
+        });
+        data[grade] = students;
+      });
+      localStorage.setItem('studentData', JSON.stringify(data));
+    }
+
+    function loadData() {
+      const saved = localStorage.getItem('studentData');
+      if (!saved) return;
+      const data = JSON.parse(saved);
+      for (const grade in data) {
+        data[grade].forEach(student => {
+          addStudent(grade, student.name, student.id, student.stars);
+        });
+      }
+    }
+
+    function showGrade(grade) {
+      document.querySelectorAll('.grade-page').forEach(page => page.classList.remove('active'));
+      document.getElementById(grade).classList.add('active');
+      document.querySelectorAll('.tabs button').forEach(tab => tab.classList.remove('active'));
+      document.getElementById('tab-' + grade).classList.add('active');
+    }
+
+    function addStar(grade, id) {
+      const starsEl = document.querySelector(`#${id} .stars`);
+      const starCount = starsEl.querySelectorAll("span").length;
+      const star = document.createElement("span");
+      star.textContent = "⭐";
+      star.style.color = rainbowColors[starCount % rainbowColors.length];
+      starsEl.appendChild(star);
+      saveData();
+    }
+
+    function removeStar(grade, id) {
+      const starsEl = document.querySelector(`#${id} .stars`);
+      const stars = starsEl.querySelectorAll("span");
+      if (stars.length > 0) {
+        stars[stars.length - 1].remove();
+        saveData();
+      }
+    }
+
+    function deleteStudent(grade, id) {
+      if (confirm("Are you sure you want to remove this student?")) {
+        const li = document.getElementById(id);
+        if (li) li.remove();
+        saveData();
+      }
+    }
+
+    function addStudent(grade, name = "", id = null, stars = 0) {
+      const input = document.getElementById("new-student-" + grade);
+      if (!name) {
+        name = input.value.trim();
+      }
+      if (name === "") return;
+
+      const studentList = document.getElementById("student-list-" + grade);
+      if (!id) id = `${grade}-student-${Date.now()}`;
+
+      const li = document.createElement("li");
+      li.id = id;
+      const starsHtml = Array.from({length: stars}, (_, i) => 
+        `<span style="color:${rainbowColors[i % rainbowColors.length]}">⭐</span>`
+      ).join("");
+
+      li.innerHTML = `
+        <span class="name" contenteditable="true" oninput="saveData()">${name}</span>
+        <span>
+          <span class="stars">${starsHtml}</span>
+          <button class="action" onclick="addStar('${grade}', '${id}')">+</button>
+          <button class="action" onclick="removeStar('${grade}', '${id}')">-</button>
+          <button class="action" style="background:#dc3545" onclick="deleteStudent('${grade}', '${id}')">x</button>
+        </span>
+      `;
+
+      studentList.appendChild(li);
+      if (input) input.value = "";
+      saveData();
+    }
+
+    function resetGrade(grade) {
+      if (confirm(`Are you sure you want to reset ${grade} grade? This will remove all students and stars.`)) {
+        const list = document.getElementById("student-list-" + grade);
+        list.innerHTML = "";
+        saveData();
+      }
+    }
+
+    // Initialize example data if nothing saved
+    window.onload = function() {
+      if (!localStorage.getItem('studentData')) {
+        addStudent('first', 'Alice');
+        addStudent('first', 'Ben');
+        addStudent('second', 'Clara');
+        addStudent('second', 'David');
+        addStudent('third', 'Ella');
+        addStudent('third', 'Finn');
+        addStudent('fourth', 'Grace');
+        addStudent('fourth', 'Henry');
+        addStudent('fifth', 'Isla');
+        addStudent('fifth', 'Jack');
+        saveData();
+      } else {
+        loadData();
+      }
+    }
+  </script>
 </body>
 </html>
