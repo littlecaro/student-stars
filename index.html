@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Stars by Grade</title>
+  <style>
+    body {
+      font-family: Helvetica, Arial, sans-serif;
+      background: #CEA2FD;
+      display: flex;
+      justify-content: center;
+      padding: 40px;
+    }
+    .container {
+      background: #eae2f6;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: 500px;
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .tabs {
+      display: flex;
+      justify-content: space-around;
+      margin-bottom: 20px;
+    }
+    .tabs button {
+      flex: 1;
+      padding: 10px;
+      margin: 0 4px;
+      border: none;
+      border-radius: 6px;
+      background: #9b59b6;
+      color: white;
+      cursor: pointer;
+    }
+    .tabs button.active {
+      background: #6d3489;
+    }
+    ul {
+      list-style: none;
+      padding: 0;
+    }
+    li {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px;
+      border-bottom: 1px solid #eee;
+    }
+    .stars {
+      font-size: 1.2em;
+      color: gold;
+    }
+    button.action {
+      margin: 0 2px;
+      border: none;
+      background: #9b59b6;
+      color: white;
+      border-radius: 6px;
+      padding: 4px 8px;
+      cursor: pointer;
+      font-size: 0.9em;
+    }
+    button.action:hover {
+      background: #6d3489;
+    }
+    .delete {
+      background: #dc3545 !important;
+    }
+    .delete:hover {
+      background: #a71d2a !important;
+    }
+    .add-student {
+      display: flex;
+      margin-top: 15px;
+      justify-content: space-between;
+    }
+    .add-student input {
+      flex: 1;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      margin-right: 8px;
+    }
+    .grade-page {
+      display: none;
+    }
+    .grade-page.active {
+      display: block;
+    }
+    .name[contenteditable="true"] {
+      padding: 2px 4px;
+      border-radius: 4px;
+      cursor: text;
+    }
+    .name[contenteditable="true"]:focus {
+      outline: 2px solid #9b59b6;
+      background: #f3eaff;
+    }
+    .reset-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+    .reset-container button {
+      background: #dc3545;
+      border: none;
+      color: white;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    .reset-container button:hover {
+      background: #a71d2a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>⭐ Student Star Tracker ⭐</h2>
+
+    <div class="tabs">
+      <button onclick="showGrade('first')" id="tab-first" class="active">First Grade</button>
+      <button onclick="showGrade('second')" id="tab-second">Second Grade</button>
+      <button onclick="showGrade('third')" id="tab-third">Third Grade</button>
+      <button onclick="showGrade('fourth')" id="tab-fourth">Fourth Grade</button>
+      <button onclick="showGrade('fifth')" id="tab-fifth">Fifth Grade</button>
+    </div>
+
+    <!-- Grade Pages -->
+    <div id="first" class="grade-page active">
+      <ul id="student-list-first"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-first" placeholder="Enter student name">
+        <button onclick="addStudent('first')">Add</button>
+      </div>
+    </div>
+
+    <div id="second" class="grade-page">
+      <ul id="student-list-second"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-second" placeholder="Enter student name">
+        <button onclick="addStudent('second')">Add</button>
+      </div>
+    </div>
+
+    <div id="third" class="grade-page">
+      <ul id="student-list-third"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-third" placeholder="Enter student name">
+        <button onclick="addStudent('third')">Add</button>
+      </div>
+    </div>
+
+    <div id="fourth" class="grade-page">
+      <ul id="student-list-fourth"></ul>
+      <div class="add-student">
+        <input type="text" id="new-student-fourth" p
